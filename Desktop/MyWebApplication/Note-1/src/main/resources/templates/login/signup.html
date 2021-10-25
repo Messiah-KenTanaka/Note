@@ -1,0 +1,65 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.79.0">
+    <title th:text="${signup}">ログイン</title>
+
+    <link rel="canonical" href="https://getbootstrap.jp/docs/5.0/examples/sign-in/">
+
+    
+
+    <!-- Bootstrap core CSS -->
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="/css/login/signin.css" rel="stylesheet">
+  </head>
+  <body class="text-center">
+    
+<main class="form-signin">
+  <form th:action="@{/signup}" method="post" th:object="${signupForm}">
+    <h1 th:text="${signup}" class="h3 mb-3 fw-normal">サインアップ</h1>
+    <!-- ユーザーID -->
+    ユーザーID
+    <label for="userId" class="visually-hidden">ユーザーID</label>
+    <input type="text" id="userId" name="userId" class="form-control" th:filed="*{userId}" th:errorclass="is-invalid" placeholder="ユーザーID" required autofocus>
+    <div class="invalid-feedback" th:errors="*{userId}"></div>
+    <!-- パスワード -->
+    パスワード
+    <label for="password" class="visually-hidden">パスワード</label>
+    <input type="password" id="password" name="password" class="form-control" th:filed="*{password}" th:errorclass="is-invalid" placeholder="パスワード" required>
+    <div class="invalid-feedback" th:errors="*{password}"></div>
+    
+    <input type="submit" value="ユーザー登録" class="w-100 btn btn-lg btn-primary">
+    <hr>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
+  </form>
+</main>
+
+
+    
+  </body>
+</html>

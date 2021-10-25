@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="${title}"></title>
+</head>
+<body>
+<h1 th:text="${title}">ようこそ</h1>
+<p th:if="${complete}" th:text="${complete}"></p>
+<form method="post" th:action="@{/update}" th:object="${noteForm}">
+	<label for="name">氏名</label><br>
+	<input id="name" name="name" type="text" th:value="*{name}"><br>	<!-- value 戻るボタンを押したときに値が残ったままになる -->
+	<div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+	<label for="title">タイトル</label><br>
+	<input id="title" name="title" type="text" th:value="*{title}"><br>	<!-- value 戻るボタンを押したときに値が残ったままになる -->
+	<div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+	<label for="contents">内容</label><br>
+	<textarea id="contents" name="contents" rows="5" cols="50" th:field="*{contents}"></textarea><br>	<!-- textareaの場合はfield -->
+	<div th:if="${#fields.hasErrors('contents')}" th:errors="*{contents}"></div>
+	<input  th:if="${id}" type="hidden" name="id" th:value="${id}">
+	<input type="submit" value="保存">
+</form>
+<br>
+
+	<h1 th:text="${id}"></h1>
+	<a th:href="@{/layout}">戻る</a>
+<br>
+
+</body>
+</html>
