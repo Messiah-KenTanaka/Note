@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	  layout:decorate="~{layout/layout}">
+
+<head>
+<meta charset="UTF-8" th:remove="tag">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h4>ノート</h4>
+		
+				<a th:href="@{/add}">新規追加</a>
+		
+				<div th:each="note : ${page}" th:object="${note}">
+					#<i th:text="*{id}"></i>
+					名前:<i th:text="*{name}"></i><br>
+					内容:<i th:text="*{content}"></i>
+					
+					<a th:href="@{edit/{id}(id=*{id})}">編集</a>
+				
+					<a th:href="@{/delete/{id}(id=*{id})}">削除</a>
+				<hr>
+				</div>
+				
+
+				
+
+	</div>
+
+</body>
+</html>

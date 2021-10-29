@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/layout}">
+<head>
+<meta charset="UTF-8" th:remove="tag">
+<title>Insert title here</title>
+</head>
+<body>
+	<div layout:fragment="content">
+		<h4>へーい</h4>
+		
+		<form th:action="@{/process}" method="post" th:object="${note}">
+			<input type="hidden" th:field="*{id}">
+			<div>
+				<label for="name">名前</label>
+				<input type="text" th:errorclass="is-invalid" th:field="*{name}">
+				<div class="invalid-feedback" th:errors="*{name}"></div>
+			</div>
+			<div>
+				<label for="content">内容</label>
+				<input type="text" th:errorclass="is-invalid" th:field="*{content}">
+				<div class="invalid-feedback" th:errors="*{content}"></div>
+			</div>
+			
+			<button>保存</button>
+		</form>
+	</div>
+</body>
+</html>
