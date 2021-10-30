@@ -23,7 +23,7 @@ public class NoteController {
 	private final NoteService service;
 
 	@GetMapping("/")
-	public String getAllNotes(Model model, @PageableDefault(size = 10) Pageable pageable) {
+	public String getAllNotes(Model model, @PageableDefault(size = 30) Pageable pageable) {
 		model.addAttribute("page", service.selectAll(pageable));
 
 		return "list";
