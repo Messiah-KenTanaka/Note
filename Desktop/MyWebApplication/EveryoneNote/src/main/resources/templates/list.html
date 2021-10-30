@@ -11,7 +11,7 @@
 
 	<div layout:fragment="content">
 		<h4>ノート</h4>
-		
+			<div th:if="${page.totalPages > 0}">
 				<a th:href="@{/add}">新規追加</a>
 		
 				<div th:each="note : ${page}" th:object="${note}">
@@ -25,9 +25,9 @@
 				<hr>
 				</div>
 				
-
-				
-
+				<!-- ページネーションを追加 -->
+				<div th:replace="~{fragments/pagination :: pagination}"></div>
+			</div>
 	</div>
 
 </body>

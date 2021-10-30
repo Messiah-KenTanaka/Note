@@ -1,5 +1,7 @@
 package com.beit_and_pear.controller;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -21,8 +23,8 @@ public class NoteController {
 	private final NoteService service;
 
 	@GetMapping("/")
-	public String getAllNotes(Model model) {
-		model.addAttribute("page", service.selectAll());
+	public String getAllNotes(Model model, @PageableDefault(size = 5) Pageable pageable) {
+		model.addAttribute("page", service.selectAll(pageable));
 
 		return "list";
 	}
