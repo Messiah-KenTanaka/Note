@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.beit_and_pear.model.Note;
 import com.beit_and_pear.service.NoteService;
@@ -37,13 +38,17 @@ public class NoteController {
 	}
 
 	@PostMapping("/process")
-	public String process(@Validated @ModelAttribute Note note, Model model, BindingResult result) {
+	public String process(@Validated @ModelAttribute Note note, BindingResult result, Model model,
+			RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
+			model.addAttribute("agein", "もう一度入力してください");
 			return "form";
 		}
 		// 現在日付をnoteに格納
 		note.setDate(LocalDate.now());
 		service.save(note);
+
+		redirectAttributes.addFlashAttribute("add", "追加しました");
 
 		return "redirect:/";
 	}
@@ -55,8 +60,9 @@ public class NoteController {
 	}
 
 	@GetMapping("/delete/{id}")
-	public String deleteNote(@PathVariable Long id) {
+	public String deleteNote(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		service.deleteByPrimaryKey(id);
+		redirectAttributes.addFlashAttribute("delete", "削除しました");
 		return "redirect:/";
 	}
 }

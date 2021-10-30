@@ -16,7 +16,6 @@ public class Note {
 
 	private Long id;
 
-	@NotBlank
 	@Size(max = 20)
 	private String name;
 
