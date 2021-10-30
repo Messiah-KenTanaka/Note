@@ -16,8 +16,8 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO note(name, content)
-		VALUES(#{name}, #{content})
+		INSERT INTO note(name, date, content)
+		VALUES(#{name}, #{date}, #{content})
 	</insert>
 	
 	<update id="updateByPrimaryKey">

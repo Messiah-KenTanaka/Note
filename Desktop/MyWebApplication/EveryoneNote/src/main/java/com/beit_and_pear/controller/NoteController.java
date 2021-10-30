@@ -1,5 +1,7 @@
 package com.beit_and_pear.controller;
 
+import java.time.LocalDate;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -23,7 +25,7 @@ public class NoteController {
 	private final NoteService service;
 
 	@GetMapping("/")
-	public String getAllNotes(Model model, @PageableDefault(size = 30) Pageable pageable) {
+	public String getAllNotes(Model model, @PageableDefault(size = 20) Pageable pageable) {
 		model.addAttribute("page", service.selectAll(pageable));
 
 		return "list";
@@ -35,10 +37,12 @@ public class NoteController {
 	}
 
 	@PostMapping("/process")
-	public String process(@Validated @ModelAttribute Note note, BindingResult result) {
+	public String process(@Validated @ModelAttribute Note note, Model model, BindingResult result) {
 		if (result.hasErrors()) {
 			return "form";
 		}
+		// 現在日付をnoteに格納
+		note.setDate(LocalDate.now());
 		service.save(note);
 
 		return "redirect:/";

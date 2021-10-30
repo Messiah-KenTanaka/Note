@@ -1,5 +1,7 @@
 package com.beit_and_pear.config;
 
+import java.time.LocalDate;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +21,7 @@ public class DataLoader implements CommandLineRunner {
 		for (int i = 0; i < 5; i++) {
 			Note note = new Note();
 			note.setName("テスト");
+			note.setDate(LocalDate.now());
 			note.setContent("テストです。削除して使用してください。");
 			service.save(note);
 		}

@@ -12,6 +12,7 @@
 		
 		<form th:action="@{/process}" method="post" th:object="${note}">
 			<input type="hidden" th:field="*{id}">
+			<input type="hidden" th:field="*{date}">
 			<div>
 				<label for="name">名前</label>
 				<input type="text" th:errorclass="is-invalid" th:field="*{name}">

@@ -17,6 +17,7 @@
 		
 				<div th:each="note : ${page}" th:object="${note}">
 					#<i th:text="*{id}"></i>
+					日付:<i th:text="*{date}"></i>
 					名前:<i th:text="*{name}"></i><br>
 					内容:<i th:text="*{content}"></i>
 					
