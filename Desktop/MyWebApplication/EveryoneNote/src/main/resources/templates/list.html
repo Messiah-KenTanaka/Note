@@ -11,8 +11,9 @@
 
 	<div layout:fragment="content">
 		<h4>ノート</h4>
+			<a th:href="@{/add}">新規追加</a>
 			<div th:if="${page.totalPages > 0}">
-				<a th:href="@{/add}">新規追加</a>
+
 		
 				<div th:each="note : ${page}" th:object="${note}">
 					#<i th:text="*{id}"></i>
