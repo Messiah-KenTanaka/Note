@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+	  layout:decorate="~{layout/layout}">
+
+<head>
+<meta charset="UTF-8" th:remove="tag">
+<title>Note</title>
+</head>
+<body>
+
+	<div layout:fragment="content">
+		<h1 style="background: linear-gradient(transparent 70%, #ffff7f 0%); text-align:center; margin-bottom: 20px;">
+			Note
+		</h1>
+		
+		<p th:text="${add}">追加しました</p>
+		<p th:text="${delete}">削除しました</p>
+		
+		  <br>
+			<div th:if="${page.totalPages > 0}">
+
+		
+				<div th:each="note : ${page}" th:object="${note}" class="shadow-lg p-3 mb-5 bg-white rounded">
+					<div style="text-decoration: underline">
+						#<i th:text="*{id}"></i>
+						<i th:text="*{date}"></i>
+						<i th:text="*{name}"></i><br>
+					</div>
+					<i style="text-decoration: underline">内容</i>
+					<pre style="font-size: 110%" th:text="*{content}"></pre>
+										
+					<div style="display:inline-flex">
+						<form th:action="@{edit/{id}(id=*{id})}" method="get">
+							<input class="btn btn-secondary" type="submit" value="編集" style="margin-right: 5px;">
+						</form>
+						<form th:action="@{/delete/{id}(id=*{id})}" method="get">
+							<input class="btn btn-danger" type="submit" value="削除">
+						</form>
+					</div>
+				</div>
+				
+				<form th:action="@{/add}" method="get">
+				  	<input class="btn btn-primary" type="submit" value="新規作成">
+				</form>
+				
+				<form th:action="@{/logout}" method="post">
+				  	<input class="btn btn-primary" type="submit" value="ログアウト">
+				</form>
+				
+				<br>
+				
+				<!-- ページネーションを追加 -->
+				<div th:replace="~{fragments/pagination :: pagination}"></div>
+			</div>
+	</div>
+
+</body>
+</html>
