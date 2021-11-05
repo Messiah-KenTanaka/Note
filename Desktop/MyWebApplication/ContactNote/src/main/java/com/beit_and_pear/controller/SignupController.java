@@ -2,10 +2,13 @@ package com.beit_and_pear.controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,5 +57,35 @@ public class SignupController {
 
 		redirectAttributes.addFlashAttribute("newCreate", "新規ユーザーを登録しました");
 		return "redirect:/login";
+	}
+
+	// データベース関連の例外処理
+	@ExceptionHandler(DataAccessException.class)
+	public String dataAccessExceptionHandler(DataAccessException e, Model model) {
+		// 空文字をセット
+		model.addAttribute("error", "");
+
+		// メッセージをModelに登録
+		model.addAttribute("message", "SignupControllerで例外が発生しました。");
+		model.addAttribute("registerErrorMessage", "既に登録されているユーザーIDで登録を行うと、この画面になる場合があります。他のユーザーIDで登録してください");
+
+		// HTTPのエラーコード（500）をModelに登録
+		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		return "error";
+	}
+
+	// その他の例外処理
+	@ExceptionHandler(Exception.class)
+	public String exceptionHandler(Exception e, Model model) {
+		// 空文字をセット
+		model.addAttribute("error", "");
+
+		// メッセージをModelに登録
+		model.addAttribute("message", "SignupControllerで例外が発生しました");
+		// HTTPのエラーコード（500）をModelに登録
+		model.addAttribute("status", HttpStatus.INTERNAL_SERVER_ERROR);
+
+		return "error";
 	}
 }
