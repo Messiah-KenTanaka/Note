@@ -25,7 +25,7 @@ public class NoteController {
 
 	private final NoteService service;
 
-	@GetMapping("/")
+	@GetMapping("/list")
 	public String getAllNotes(Model model, @PageableDefault(size = 20) Pageable pageable) {
 		model.addAttribute("page", service.selectAll(pageable));
 
@@ -50,7 +50,7 @@ public class NoteController {
 
 		redirectAttributes.addFlashAttribute("add", "追加しました");
 
-		return "redirect:/";
+		return "redirect:/list";
 	}
 
 	@GetMapping("/edit/{id}")
@@ -63,6 +63,6 @@ public class NoteController {
 	public String deleteNote(@PathVariable Long id, RedirectAttributes redirectAttributes) {
 		service.deleteByPrimaryKey(id);
 		redirectAttributes.addFlashAttribute("delete", "削除しました");
-		return "redirect:/";
+		return "redirect:/list";
 	}
 }
