@@ -17,6 +17,9 @@ mybatis:
   configuration:
     map-underscore-to-camel-case: true
   type-aliases-package: com.beit_and_pear.model
+  mapper-locations:
+  - classpath*:/com/beit_and_pear/mapper/h2/*.xml
+  
   
 server:
   port: 5000

@@ -4,3 +4,9 @@ CREATE TABLE IF NOT EXISTS note (
 	name VARCHAR(20),
 	content VARCHAR(250) NOT NULL
 	);
+	
+CREATE TABLE IF NOT EXISTS m_user (
+	user_id VARCHAR(30) PRIMARY KEY,
+	password VARCHAR(30),
+	role varchar(50)
+	);
