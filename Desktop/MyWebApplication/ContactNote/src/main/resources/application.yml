@@ -21,8 +21,8 @@ mybatis:
   - classpath*:/com/beit_and_pear/mapper/h2/*.xml
   
   
-server:
-  port: 5000
+#server:
+#  port: 5000
   
 ---
 

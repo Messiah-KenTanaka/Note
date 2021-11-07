@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS note (
 	);
 	
 CREATE TABLE IF NOT EXISTS m_user (
-	user_id VARCHAR(30) PRIMARY KEY,
-	password VARCHAR(30),
+	user_id VARCHAR(100) PRIMARY KEY,
+	password VARCHAR(100),
 	role varchar(50)
 	);

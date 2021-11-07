@@ -14,7 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-	// パスワードの暗号化
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -56,7 +55,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		PasswordEncoder encoder = passwordEncoder();
 		// インメモリ認証
 		auth.inMemoryAuthentication().withUser("user") // userを追加
-				.password(encoder.encode("user")).roles("GEMERAL").and().withUser("admin") // adminを追加
+				.password(encoder.encode("user")).roles("GENERAL").and().withUser("admin") // adminを追加
 				.password(encoder.encode("admin")).roles("ADMIN");
 	}
 

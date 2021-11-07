@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
 
 	// ログイン画面を表示
-	@GetMapping({ "/", "/login" })
+	@GetMapping("/login")
 	public String getLogin() {
 		return "login/login";
 	}

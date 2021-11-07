@@ -11,18 +11,17 @@ import com.beit_and_pear.model.MUser;
 public class UserServiceImpl implements UserService {
 
 	@Autowired
-	private PasswordEncoder encoder;
+	private UserMapper mapper;
 
 	@Autowired
-	private UserMapper mapper;
+	private PasswordEncoder encoder;
 
 	// ユーザー登録
 	@Override
 	public void signup(MUser user) {
 		user.setRole("ROLE_GENERAL"); // ロール
-		mapper.insertOne(user);
 
-		// パスワードを暗号化
+		// パスワード暗号化
 		String rawPassword = user.getPassword();
 		user.setPassword(encoder.encode(rawPassword));
 

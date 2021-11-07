@@ -41,12 +41,9 @@
     <h1 class="h3 mb-3 fw-normal">ログイン画面</h1>
     
     <p th:text="${newCreate}">ユーザーを新規登録しました</p>
-    
-    
     <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null" 
-       th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}" class="text-danger">
-	    ログインエラーメッセージ
-	</p>
+       th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
+       class="text-danger">    ログインエラーメッセージ</p>
     
     <label for="userId" class="visually-hidden"></label>ユーザーID
     <input type="text" id="userId" name="userId" class="form-control" placeholder="ユーザーID" required autofocus>
