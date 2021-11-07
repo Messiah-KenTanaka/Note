@@ -1,5 +1,6 @@
 package com.beit_and_pear.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -7,12 +8,17 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	private UserDetailsService userDetailsService;
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -42,6 +48,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.passwordParameter("password") // ログインページのパスワード
 				.defaultSuccessUrl("/list", true); // 成功時の遷移先
 
+		// ログアウト処理
+		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutUrl("/logout")
+				.logoutSuccessUrl("/login?logout");
+
 		// CSRF対策を向こうに設定（一時的）
 		http.csrf().disable();
 
@@ -54,9 +64,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		PasswordEncoder encoder = passwordEncoder();
 		// インメモリ認証
-		auth.inMemoryAuthentication().withUser("user") // userを追加
-				.password(encoder.encode("user")).roles("GENERAL").and().withUser("admin") // adminを追加
-				.password(encoder.encode("admin")).roles("ADMIN");
+//		auth.inMemoryAuthentication().withUser("user") // userを追加
+//				.password(encoder.encode("user")).roles("GENERAL").and().withUser("admin") // adminを追加
+//				.password(encoder.encode("admin")).roles("ADMIN");
+		// ユーザーデータで認証
+		auth.userDetailsService(userDetailsService).passwordEncoder(encoder);
 	}
 
 }
