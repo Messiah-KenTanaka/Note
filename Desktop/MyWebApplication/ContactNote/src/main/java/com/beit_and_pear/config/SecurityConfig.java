@@ -50,12 +50,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		// ログアウト処理
 		http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutUrl("/logout")
-				.logoutSuccessUrl("/login?logout");
+				.logoutSuccessUrl("/login?logout")
+				// 再度開いた状態でも「ログインしたまま」
+				.and().rememberMe();
 
 		// CSRF対策を向こうに設定（一時的）
 //		http.csrf().disable();
 
-		// rememberMeの設定を忘れずに
 	}
 
 	// 認証の設定

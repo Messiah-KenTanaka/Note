@@ -14,6 +14,10 @@
 			Note
 		</h1>
 		
+		<!-- ページネーションを追加 -->
+		<div th:replace="~{fragments/pagination :: pagination}"></div>
+		
+		
 		
 		<p th:text="${add}">追加しました</p>
 		<p th:text="${delete}">削除しました</p>
@@ -33,24 +37,22 @@
 										
 					<div style="display:inline-flex">
 						<form th:action="@{edit/{id}(id=*{id})}" method="get">
-							<input class="btn btn-secondary" type="submit" value="編集" style="margin-right: 5px;">
+							<input class="btn btn-secondary" type="submit" value="編集" style="margin-right: 10px;">
 						</form>
 						<form th:action="@{/delete/{id}(id=*{id})}" method="get">
 							<input class="btn btn-danger" type="submit" value="削除">
 						</form>
 					</div>
 				</div>
-				
-				<form th:action="@{/add}" method="get">
-				  	<input class="btn btn-primary" type="submit" value="新規作成">
-				</form>
-				
-				<form th:action="@{/logout}" method="post">
-				  	<input class="btn btn-primary" type="submit" value="ログアウト">
-				</form>
-				
-				<br>
-				
+				<div style="display:inline-flex">
+					<form th:action="@{/add}" method="get">
+					  	<input class="btn btn-primary" type="submit" value="新規作成" style="margin-right: 10px">
+					</form>
+					<form th:action="@{/logout}" method="post">
+					  	<input class="btn btn-primary" type="submit" value="ログアウト">
+					</form>
+				</div>
+				<hr>
 				<!-- ページネーションを追加 -->
 				<div th:replace="~{fragments/pagination :: pagination}"></div>
 			</div>
