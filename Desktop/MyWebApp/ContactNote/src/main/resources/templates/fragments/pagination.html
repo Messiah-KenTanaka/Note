@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- レイアウトで使わないので、th:remove="tag"は不要です -->
+<meta charset="UTF-8">
+</head>
+<body>
+<!-- ページネーションを追加-->
+	<th:block th:fragment="pagination">
+		<div th:if="${page.totalPages > 0}" class="col auto">
+			<nav>
+				<ul class="pagination">
+				<!-- 前へ-->
+					<li th:if="${page.hasPrevious()}" class="pageitem">
+						<a class="page-link" th:href="@{/list(page=${page.number - 1})}">前へ</a>
+					</li>
+					<!-- ページ番号 -->
+					<th:block th:each="i: ${#numbers.sequence(0,page.totalPages - 1)}" th:switch="${page.number}">
+						<li th:case="${i}" class="page-item active">
+							<a class="page-link" th:text="${i + 1}"></a>
+						</li>
+						<li th:case="*" class="page-item">
+							<a class="page-link" th:href="@{/list(page=${i})}" th:text="${i + 1}"></a>
+						</li>
+					</th:block>
+					<!-- 次へ -->
+					<li th:if="${page.hasNext()}" class="page-item">
+						<a class="page-link" th:href="@{/list(page=${page.number + 1})}">次へ</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</th:block>
+</body>
+</html>
+

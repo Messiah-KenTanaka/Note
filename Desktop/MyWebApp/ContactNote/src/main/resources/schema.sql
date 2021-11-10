@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS note (
+	id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	date datetime,
+	name VARCHAR(20),
+	content VARCHAR(250) NOT NULL
+	);
+	
+CREATE TABLE IF NOT EXISTS m_user (
+	user_id VARCHAR(100) PRIMARY KEY,
+	password VARCHAR(100),
+	role varchar(50)
+	);
