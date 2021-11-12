@@ -2,17 +2,27 @@
 <html xmlns:th="http://www.thymeleaf.org" >
 <head>
 <meta charset="UTF-8">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 
-<link th:href="@{/css/app.css}" rel="stylesheet">
+<link th:href="@{/css/index.css}" rel="stylesheet">
 <title>ContactNote</title>
 </head>
 <body>
 	<div class="bg-image">
-		<h1>最初の画面</h1>
+		<div class="title">
+			ContactNote
+		</div>
 		
-		<form th:action="@{/getlogin}" method="get">
-			<button>ログイン画面へ</button>
-		</form>
+		<div class="btn-real-dent center">
+			<!-- <form th:action="@{/getlogin}" method="get">
+				<button>
+					<i class="fa fa-home"></i>
+				</button>
+			</form>  -->
+			<a th:href="@{/getlogin}"><i class="fa fa-home"></i></a>
+		</div>
 	</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 </html>
