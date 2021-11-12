@@ -17,13 +17,4 @@ public class IndexController {
 		return "index";
 	}
 
-	@GetMapping("/getlogin")
-	public String getLogin() {
-		return "login";
-	}
-
-	@PostMapping("/getlogin")
-	public String postLogin() {
-		return "login";
-	}
 }
