@@ -29,14 +29,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// セキュリティを適用しない
-		web.ignoring().antMatchers("/webjars/**").antMatchers("/css/**").antMatchers("/js/**")
+		web.ignoring().antMatchers("/webjars/**").antMatchers("/css/**").antMatchers("/js/**").antMatchers("/img/**")
 				.antMatchers("/h2-console/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		// ログイン不要ページの設定
-		http.authorizeRequests().antMatchers("/login").permitAll() // 直リンクOK
+		http.authorizeRequests().antMatchers("/") // 直リンクOK
+				.permitAll().antMatchers("/login").permitAll() // 直リンクOK
 				.antMatchers("/user/signup").permitAll() // 直リンクOK
 				.anyRequest().authenticated(); // それ以外はNG
 

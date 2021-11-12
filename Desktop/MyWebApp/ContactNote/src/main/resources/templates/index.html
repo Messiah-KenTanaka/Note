@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+<meta charset="UTF-8">
+
+<link th:href="@{/css/app.css}" rel="stylesheet">
+<title>ContactNote</title>
+</head>
+<body>
+	<div class="bg-image">
+		<h1>最初の画面</h1>
+		
+		<form th:action="@{/getlogin}" method="get">
+			<button>ログイン画面へ</button>
+		</form>
+	</div>
+</body>
+</html>
