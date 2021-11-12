@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.79.0">
-    <title>ログイン画面</title>
+    <title>ContactNote/ログイン画面</title>
 
     <link rel="canonical" href="https://getbootstrap.jp/docs/5.0/examples/sign-in/">
 
@@ -32,15 +32,17 @@
 
     <!-- Custom styles for this template -->
     <link th:href="@{/css/signin.css}" href="signin.css" rel="stylesheet">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
   </head>
-  <body class="text-center">
-    
+  <body class="text-center bg-image">
+  
 <main class="form-signin">
+<div class="box">  
   <form method="post" th:action="@{/login}">
   
     <h1 class="h3 mb-3 fw-normal">ログイン画面</h1>
     
-    <p th:text="${newCreate}">ユーザーを新規登録しました</p>
+    <p th:text="${newCreate}" class="text-success">ユーザーを新規登録しました</p>
     <p th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null" 
        th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"
        class="text-danger">    ログインエラーメッセージ</p>
@@ -66,9 +68,8 @@
     
     <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
   </form>
+</div> 
 </main>
-
-
-    
+ 
   </body>
 </html>

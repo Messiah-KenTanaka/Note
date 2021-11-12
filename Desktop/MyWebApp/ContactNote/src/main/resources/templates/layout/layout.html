@@ -33,10 +33,10 @@
     
     <!-- Custom styles for this template -->
     <link th:href="@{/css/starter-template.css}" href="/css/starter-template.css" rel="stylesheet">
-    
+    <link th:href="@{/css/index.css}" rel="stylesheet">   
   </head>
-  <body>
-    
+<body class="bg-image">
+ 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" th:href="@{/list}">ContactNote</a>
@@ -53,10 +53,10 @@
           <a class="nav-link" th:href="@{/logout}">ログアウト</a>
         </li>
       </ul>
-      <form class="d-flex">
+<!--       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="検索" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">検索</button>
-      </form>
+      </form> -->
     </div>
   </div>
 </nav>
@@ -73,5 +73,5 @@
     <script th:src="@{/js/bootstrap.bundle.min.js}" src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
       
-  </body>
+</body>
 </html>

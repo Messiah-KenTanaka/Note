@@ -5,13 +5,16 @@
 
 <head>
 <meta charset="UTF-8" th:remove="tag">
+<link th:href="@{/css/index.css}" rel="stylesheet">
 <title>ContactNote</title>
 </head>
 <body>
 
+
 	<div layout:fragment="content">
+	<div class="box">
 		<h1 style="background: linear-gradient(transparent 70%, #ffff7f 0%); text-align:center; margin-bottom: 20px;">
-			ContactNote
+			<i style="font-size: 5vmax; color: black;">ContactNote</i>
 		</h1>
 		
 		<!-- ページネーションを追加 -->
@@ -57,6 +60,6 @@
 				<div th:replace="~{fragments/pagination :: pagination}"></div>
 			</div>
 	</div>
-
+	</div>
 </body>
 </html>

@@ -21,4 +21,9 @@ public class IndexController {
 	public String getLogin() {
 		return "login";
 	}
+
+	@PostMapping("/getlogin")
+	public String postLogin() {
+		return "login";
+	}
 }

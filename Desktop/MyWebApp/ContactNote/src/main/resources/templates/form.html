@@ -4,11 +4,15 @@
 	  layout:decorate="~{layout/layout}">
 <head>
 <meta charset="UTF-8" th:remove="tag">
-<title>ContactNote</title>
+<link th:href="@{/css/index.css}" rel="stylesheet">
+<title>ContactNote/新規作成</title>
 </head>
 <body>
 	<div layout:fragment="content">
-		<h2 style="background: linear-gradient(transparent 70%, #ff7f7f 0%); text-align:center;">Note作成</h2>
+	<div class="box">
+		<h2 style="background: linear-gradient(transparent 70%, #ff7f7f 0%); text-align:center;">
+			<i style="font-size: 2vmax; color: black;">新規作成</i>
+		</h2>
 		
 		<p th:text="${agein}">もう一度入力してください</p>
 		
@@ -16,7 +20,7 @@
 			<input type="hidden" th:field="*{id}">
 			<input type="hidden" th:field="*{date}">
 			<div>
-				<label for="name" class="form-label">名前</label>
+				<label for="name" class="form-label">氏名</label>
 				<input class="form-control" type="text" th:errorclass="is-invalid" th:field="*{name}">
 				<div class="invalid-feedback" th:errors="*{name}"></div>
 			</div>
@@ -29,6 +33,7 @@
 			
 			<button class="btn btn-primary">保存</button>
 		</form>
+	</div>
 	</div>
 </body>
 </html>
