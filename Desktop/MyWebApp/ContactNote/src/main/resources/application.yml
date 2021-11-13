@@ -33,7 +33,7 @@ spring:
       on-profile:
       - dev
   datasource:
-    url: jdbc:mysql://aa4xwwve15xvvl.cc2cv1hryoxu.ap-northeast-1.rds.amazonaws.com:3306/ebdb
+    url: jdbc:mysql://aa1ow3ys42a3nht.cc2cv1hryoxu.ap-northeast-1.rds.amazonaws.com/ebdb
     username: admin
     password: tanaka3284
   sql:
