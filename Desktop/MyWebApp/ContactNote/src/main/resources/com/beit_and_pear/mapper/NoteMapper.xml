@@ -7,7 +7,9 @@
 	</select>
 
 	<select id="selectAll" resultType="Note">
-		SELECT * FROM note ORDER BY id DESC
+		SELECT * FROM note 
+		
+		ORDER BY id DESC
 	</select>
 	
 	<select id="selectByPrimaryKey" resultType="Note">
