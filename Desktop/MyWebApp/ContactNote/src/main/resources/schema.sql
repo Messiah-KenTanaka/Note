@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS note (
 	date datetime,
 	name VARCHAR(20),
 	content VARCHAR(250) NOT NULL,
-	user_id VARCHAR(100)
+	user_id VARCHAR(100) NOT NULL
 	);
 	
 CREATE TABLE IF NOT EXISTS m_user (

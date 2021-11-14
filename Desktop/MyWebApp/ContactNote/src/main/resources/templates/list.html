@@ -17,10 +17,11 @@
 			<i style="font-size: 5vmax; color: black;">ContactNote</i>
 		</h1>
 		
+		<!-- ログインユーザーネーム -->
+		こんにちは <i th:text="${userid}"></i> さん
+		
 		<!-- ページネーションを追加 -->
 		<div th:replace="~{fragments/pagination :: pagination}"></div>
-		
-		<p th:text="${userid}"></p>
 		
 		<p th:text="${add}">追加しました</p>
 		<p th:text="${delete}">削除しました</p>
@@ -35,6 +36,7 @@
 						#<i th:text="*{id}"></i>
 						<i th:text="*{date}"></i>
 						<i th:text="*{name}"></i>
+						<i th:text=*{userId}></i>
 						<br>
 					</div>
 					<i style="text-decoration: underline">内容</i>

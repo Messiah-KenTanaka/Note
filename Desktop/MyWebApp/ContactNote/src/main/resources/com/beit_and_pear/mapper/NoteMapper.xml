@@ -18,8 +18,8 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO note(name, date, content)
-		VALUES(#{name}, #{date}, #{content})
+		INSERT INTO note(name, date, content, user_id)
+		VALUES(#{name}, #{date}, #{content}, #{userId})
 	</insert>
 	
 	<update id="updateByPrimaryKey">

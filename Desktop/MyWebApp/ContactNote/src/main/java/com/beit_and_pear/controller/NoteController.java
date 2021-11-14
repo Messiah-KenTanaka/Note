@@ -31,7 +31,6 @@ public class NoteController {
 	public String getAllNotes(Authentication loginUser, Model model, MUser user,
 			@PageableDefault(size = 20) Pageable pageable) {
 		model.addAttribute("page", service.selectAll(pageable));
-
 		model.addAttribute("userid", loginUser.getName());
 		return "list";
 	}
@@ -42,12 +41,14 @@ public class NoteController {
 	}
 
 	@PostMapping("/process")
-	public String process(@Validated @ModelAttribute Note note, BindingResult result, Model model,
-			RedirectAttributes redirectAttributes) {
+	public String process(Authentication loginUser, @Validated @ModelAttribute Note note, BindingResult result,
+			Model model, RedirectAttributes redirectAttributes) {
 		if (result.hasErrors()) {
 			model.addAttribute("agein", "もう一度入力してください");
 			return "form";
 		}
+		String userId = loginUser.getName();
+		note.setUserId(userId);
 		// 現在日付をnoteに格納
 		note.setDate(LocalDate.now());
 		service.save(note);
