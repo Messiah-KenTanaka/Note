@@ -2,8 +2,6 @@ package com.beit_and_pear.controller;
 
 import java.time.LocalDate;
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,9 +26,8 @@ public class NoteController {
 	private final NoteService service;
 
 	@GetMapping("/list")
-	public String getAllNotes(Authentication loginUser, Model model, MUser user,
-			@PageableDefault(size = 20) Pageable pageable) {
-		model.addAttribute("page", service.selectAll(pageable));
+	public String getAllNotes(Authentication loginUser, Model model, MUser user) {
+		model.addAttribute("page", service.selectAll(loginUser, loginUser.getName()));
 		model.addAttribute("userid", loginUser.getName());
 		return "list";
 	}
@@ -47,6 +44,7 @@ public class NoteController {
 			model.addAttribute("agein", "もう一度入力してください");
 			return "form";
 		}
+		// ログインユーザーIDを Note .javaのuserIdに格納
 		String userId = loginUser.getName();
 		note.setUserId(userId);
 		// 現在日付をnoteに格納
