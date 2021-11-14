@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.beit_and_pear</groupId>
 	<artifactId>ContactNote</artifactId>
-	<version>1.0.3</version>
+	<version>1.0.5</version>
 	<name>ContactNote</name>
 	<description>ContactNote project for Spring Boot</description>
 	<properties>
@@ -103,6 +103,11 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+		    <artifactId>jquery</artifactId>
+		    <version>3.5.1</version>
 		</dependency>
 	</dependencies>
 

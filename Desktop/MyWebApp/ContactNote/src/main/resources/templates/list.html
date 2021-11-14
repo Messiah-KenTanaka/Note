@@ -7,6 +7,8 @@
 <meta charset="UTF-8" th:remove="tag">
 <link th:href="@{/css/index.css}" rel="stylesheet">
 <title>ContactNote</title>
+<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"></script>
+<script th:src="@{/js/dialog.js}" defer="defer"></script>
 </head>
 <body>
 
@@ -42,8 +44,9 @@
 						<form th:action="@{edit/{id}(id=*{id})}" method="get">
 							<input class="btn btn-secondary" type="submit" value="編集" style="margin-right: 10px;">
 						</form>
+						
 						<form th:action="@{/delete/{id}(id=*{id})}" method="get">
-							<input class="btn btn-danger" type="submit" value="削除">
+							<input class="btn btn-danger delete-action" type="submit" value="削除">
 						</form>
 					</div>
 				</div>
