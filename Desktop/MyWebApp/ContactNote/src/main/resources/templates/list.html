@@ -18,11 +18,11 @@
 		</h1>
 		
 		<!-- ログインユーザーネーム -->
-		こんにちは <i th:text="${userid}"></i> さん
+		<p>こんにちは <i th:text="${userid}"></i> さん</p>
 		
 		
-		<p th:text="${add}">追加しました</p>
-		<p th:text="${delete}">削除しました</p>
+		<p th:text="${add}" class="text-success">追加しました</p>
+		<p th:text="${delete}" class="text-danger">削除しました</p>
 		
 		  <br>
 
@@ -58,6 +58,6 @@
 				<hr>
 			</div>
 	</div>
-	</div>
+
 </body>
 </html>

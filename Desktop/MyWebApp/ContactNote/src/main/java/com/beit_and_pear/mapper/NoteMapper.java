@@ -10,7 +10,7 @@ import com.beit_and_pear.model.Note;
 @Mapper
 public interface NoteMapper {
 
-	// 全件取得
+	// ユーザーごとの日記を全件取得
 	List<Note> selectAll(Authentication loginUser, String userId);
 
 	// 一件取得

@@ -12,7 +12,7 @@
 	text-align: center;
 	font-size: 8vmax;
 	font-weight: bold;
-	color: red;
+	color: black;
 }
 
 .center {
@@ -59,7 +59,7 @@
 }
 
 .box {
-    padding: 2em 1em;
+    padding: 2em 10px;
     margin: 2em 2;
     color: #5d627b;
     background: white;

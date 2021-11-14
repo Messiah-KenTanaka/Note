@@ -12,6 +12,8 @@ spring:
   h2:
     console:
       enabled: true
+  messages:
+    basename: i18n/messages,i18n/ValidationMessages
     
 mybatis:
   configuration:
@@ -20,6 +22,7 @@ mybatis:
   mapper-locations:
   - classpath*:/com/beit_and_pear/mapper/h2/*.xml
   
+
   
 #server:
 #  port: 5000
